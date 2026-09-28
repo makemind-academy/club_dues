@@ -1,0 +1,7 @@
+{
+  "type": "application",
+  "title": "Club Dues",
+  "version": "1.0.0",
+  "initialRoute": "/",
+  "routes": { "/": "ui://pages/dues" }
+}

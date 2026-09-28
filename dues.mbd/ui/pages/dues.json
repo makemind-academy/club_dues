@@ -1,0 +1,38 @@
+{
+  "type": "page",
+  "title": "Dues",
+  "version": "1.0.0",
+  "initialState": { "rows": [], "paidCount": 0, "total": 0, "collected": "", "owed": "", "notice": "" },
+  "onInit": { "type": "tool", "tool": "dues.list", "params": {} },
+  "content": {
+    "type": "center",
+    "child": {
+      "type": "linear", "direction": "vertical", "alignment": "center", "spacing": 14,
+      "children": [
+        { "type": "text", "text": "APRIL DUES",
+          "style": { "fontSize": 13, "color": "#7d8b96", "letterSpacing": 2.0 } },
+        { "type": "text", "text": "{{paidCount}} of {{total}} paid",
+          "style": { "fontSize": 36, "fontWeight": "bold", "color": "#101820" } },
+        { "type": "text", "text": "{{collected}} in · {{owed}} still out",
+          "style": { "fontSize": 16, "color": "#7d8b96" } },
+        { "type": "box", "width": 460, "height": 230,
+          "child": {
+            "type": "list", "items": "{{rows}}", "shrinkWrap": true, "spacing": 6, "emptyMessage": "No members",
+            "itemTemplate": {
+              "type": "linear", "direction": "horizontal", "crossAxisAlignment": "center",
+              "children": [
+                { "type": "expanded", "child": { "type": "text", "text": "{{item.name}}",
+                  "style": { "fontSize": 18, "color": "#101820" } } },
+                { "type": "container", "width": 90, "alignment": "centerEnd", "child": { "type": "text",
+                  "content": "{{item.mark}}", "maxLines": 1, "style": { "fontSize": 16, "color": "#2f7d5c", "textAlign": "end" } } }
+              ]
+            }
+          } },
+        { "type": "button", "label": "Amelia paid", "variant": "elevated",
+          "onTap": { "type": "tool", "tool": "dues.toggle", "params": { "who": "Amelia" } } },
+        { "type": "text", "text": "{{notice}}",
+          "style": { "fontSize": 14, "color": "#2f7d5c" } }
+      ]
+    }
+  }
+}
